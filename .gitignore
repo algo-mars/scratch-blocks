@@ -14,7 +14,7 @@ common.pyc
 /nbproject/private/
 
 /accessible/*
-/dist
+# /dist
 /msg/json/synonyms.json
 /msg/json/qqq.json
 /blockly_compressed_horizontal.js
