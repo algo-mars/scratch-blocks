@@ -260,19 +260,36 @@ Blockly.Workspace.prototype.getTopComments = function(ordered) {
 };
 
 /**
- * Find all blocks in workspace.  No particular order.
+ * Find all blocks in workspace.  Blocks are optionally sorted
+ * by position; top to bottom (with slight LTR or RTL bias).
+ * @param {boolean} ordered Sort the list if true.
  * @return {!Array.<!Blockly.Block>} Array of blocks.
  */
-Blockly.Workspace.prototype.getAllBlocks = function() {
-  var blocks = this.getTopBlocks(false);
-  for (var i = 0; i < blocks.length; i++) {
-    blocks.push.apply(blocks, blocks[i].getChildren());
+Blockly.Workspace.prototype.getAllBlocks = function(ordered) {
+  if (ordered) {
+    // Slow, but ordered.
+    // This gets all levels of descendants because getDescendants
+    // is called recuusively.  They are added to a new list, not the
+    // list that it's iterating over.
+    var topBlocks = this.getTopBlocks(true);
+    var blocks = [];
+    for (var i = 0; i < topBlocks.length; i++) {
+      blocks.push.apply(blocks, topBlocks[i].getDescendants(true));
+    }
+  } else {
+    // Fast, but in no particular order.
+    // This gets all of levels of descendants by always adding to the
+    // list that it's iterating over.
+    var blocks = this.getTopBlocks(false);
+    for (var i = 0; i < blocks.length; i++) {
+      blocks.push.apply(blocks, blocks[i].getChildren(false));
+    }
   }
   return blocks;
 };
 
 /**
- * Dispose of all blocks in workspace.
+ * Dispose of all blocks and comments in workspace.
  */
 Blockly.Workspace.prototype.clear = function() {
   this.isClearing = true;
@@ -471,6 +488,14 @@ Blockly.Workspace.prototype.undo = function(redo) {
   }
   events = Blockly.Events.filter(events, redo);
   Blockly.Events.recordUndo = false;
+  if (Blockly.selected) {
+    Blockly.Events.disable();
+    try {
+      Blockly.selected.unselect();
+    } finally {
+      Blockly.Events.enable();
+    }
+  }
   try {
     for (var i = 0, event; event = events[i]; i++) {
       event.run(redo);

@@ -24,10 +24,13 @@
  *
  * After modifying this file, run `npm run translate` from the root directory
  * to regenerate `./msg/json/en.json`.
+ * IMPORTANT:
+ * All message strings must use single quotes for the scripts to work properly
  */
 'use strict';
 
 goog.provide('Blockly.Msg.en');
+
 goog.require('Blockly.Msg');
 
 // Control blocks
@@ -46,6 +49,7 @@ Blockly.Msg.CONTROL_WHILE = "повторять пока %1";
 Blockly.Msg.CONTROL_FOREACH = "для каждого %1 в %2";
 Blockly.Msg.CONTROL_STARTASCLONE = "когда я начинаю как клон";
 Blockly.Msg.CONTROL_CREATECLONEOF = "создать клон %1";
+Blockly.Msg.CONTROL_CREATECLONEOF_MYSELF = 'myself';
 Blockly.Msg.CONTROL_DELETETHISCLONE = "удалить клон";
 Blockly.Msg.CONTROL_COUNTER = "счётчик";
 Blockly.Msg.CONTROL_INCRCOUNTER = "увеличить счётчик";
@@ -66,14 +70,19 @@ Blockly.Msg.DATA_LENGTHOFLIST = "длина списка %1";
 Blockly.Msg.DATA_LISTCONTAINSITEM = "%1 содержит %2?";
 Blockly.Msg.DATA_SHOWLIST = "показать список %1";
 Blockly.Msg.DATA_HIDELIST = "скрыть список %1";
+Blockly.Msg.DATA_INDEX_ALL = 'all';
+Blockly.Msg.DATA_INDEX_LAST = 'last';
+Blockly.Msg.DATA_INDEX_RANDOM = 'random';
 
 // Event blocks
 Blockly.Msg.EVENT_WHENFLAGCLICKED = "когда щелкнут по %1";
 Blockly.Msg.EVENT_WHENTHISSPRITECLICKED = "когда спрайт нажат";
 Blockly.Msg.EVENT_WHENSTAGECLICKED = "когда кликнут по сцене";
+Blockly.Msg.EVENT_WHENTOUCHINGOBJECT = 'when this sprite touches %1';
 Blockly.Msg.EVENT_WHENBROADCASTRECEIVED = "когда я получу %1";
 Blockly.Msg.EVENT_WHENBACKDROPSWITCHESTO = "когда фон меняется на %1";
 Blockly.Msg.EVENT_WHENGREATERTHAN = "когда %1 > %2";
+Blockly.Msg.EVENT_WHENGREATERTHAN_TIMER = 'timer';
 Blockly.Msg.EVENT_BROADCAST = "передать %1";
 Blockly.Msg.EVENT_BROADCASTANDWAIT = "передать %1 и ждать";
 Blockly.Msg.EVENT_WHENKEYPRESSED = "когда клавиша %1 нажата";
@@ -91,38 +100,38 @@ Blockly.Msg.LOOKS_THINKFORSECS = "думать %1  %2 секунд";
 Blockly.Msg.LOOKS_THINK = "думать %1";
 Blockly.Msg.LOOKS_SHOW = "показаться";
 Blockly.Msg.LOOKS_HIDE = "спрятаться";
+Blockly.Msg.LOOKS_HIDEALLSPRITES = 'hide all sprites';
+Blockly.Msg.LOOKS_EFFECT_COLOR = 'color';
+Blockly.Msg.LOOKS_EFFECT_FISHEYE = 'fisheye';
+Blockly.Msg.LOOKS_EFFECT_WHIRL = 'whirl';
+Blockly.Msg.LOOKS_EFFECT_PIXELATE = 'pixelate';
+Blockly.Msg.LOOKS_EFFECT_MOSAIC = 'mosaic';
+Blockly.Msg.LOOKS_EFFECT_BRIGHTNESS = 'brightness';
+Blockly.Msg.LOOKS_EFFECT_GHOST = 'ghost';
 Blockly.Msg.LOOKS_CHANGEEFFECTBY = "изменить эффект %1 на %2";
 Blockly.Msg.LOOKS_SETEFFECTTO = "установить эффект %1 в значение %2";
 Blockly.Msg.LOOKS_CLEARGRAPHICEFFECTS = "убрать графические эффекты";
 Blockly.Msg.LOOKS_CHANGESIZEBY = "изменить размер на %1";
 Blockly.Msg.LOOKS_SETSIZETO = "установить размер %1 %";
 Blockly.Msg.LOOKS_SIZE = "размер";
+Blockly.Msg.LOOKS_CHANGESTRETCHBY = 'change stretch by %1';
+Blockly.Msg.LOOKS_SETSTRETCHTO = 'set stretch to %1 %';
 Blockly.Msg.LOOKS_SWITCHCOSTUMETO = "сменить костюм на %1";
 Blockly.Msg.LOOKS_NEXTCOSTUME = "следующий костюм";
 Blockly.Msg.LOOKS_SWITCHBACKDROPTO = "сменить фон на %1";
 Blockly.Msg.LOOKS_GOTOFRONTBACK = "перейти в %1 слой";
+Blockly.Msg.LOOKS_GOTOFRONTBACK_FRONT = 'front';
+Blockly.Msg.LOOKS_GOTOFRONTBACK_BACK = 'back';
 Blockly.Msg.LOOKS_GOFORWARDBACKWARDLAYERS = "перейти %1 на %2 слоев";
+Blockly.Msg.LOOKS_GOFORWARDBACKWARDLAYERS_FORWARD = 'forward';
+Blockly.Msg.LOOKS_GOFORWARDBACKWARDLAYERS_BACKWARD = 'backward';
 Blockly.Msg.LOOKS_BACKDROPNUMBERNAME = "фон %1";
 Blockly.Msg.LOOKS_COSTUMENUMBERNAME = "костюм %1";
+Blockly.Msg.LOOKS_NUMBERNAME_NUMBER = 'number';
+Blockly.Msg.LOOKS_NUMBERNAME_NAME = 'name';
 Blockly.Msg.LOOKS_SWITCHBACKDROPTOANDWAIT = "сменить фон на %1 и ждать";
 Blockly.Msg.LOOKS_NEXTBACKDROP = "следующий фон";
-
-Blockly.Msg.LOOKS_HIDEALLSPRITES = "hide all sprites";
-Blockly.Msg.LOOKS_EFFECT_COLOR = "color";
-Blockly.Msg.LOOKS_EFFECT_FISHEYE = "fisheye";
-Blockly.Msg.LOOKS_EFFECT_WHIRL = "whirl";
-Blockly.Msg.LOOKS_EFFECT_PIXELATE = "pixelate";
-Blockly.Msg.LOOKS_EFFECT_MOSAIC = "mosaic";
-Blockly.Msg.LOOKS_EFFECT_BRIGHTNESS = "brightness";
-Blockly.Msg.LOOKS_EFFECT_GHOST = "ghost";
-Blockly.Msg.LOOKS_CHANGESTRETCHBY = "change stretch by %1";
-Blockly.Msg.LOOKS_SETSTRETCHTO = "set stretch to %1 %";
-Blockly.Msg.LOOKS_GOTOFRONTBACK_FRONT = "front";
-Blockly.Msg.LOOKS_GOTOFRONTBACK_BACK = "back";
-Blockly.Msg.LOOKS_GOFORWARDBACKWARDLAYERS_FORWARD = "forward";
-Blockly.Msg.LOOKS_GOFORWARDBACKWARDLAYERS_BACKWARD = "backward";
-Blockly.Msg.LOOKS_NUMBERNAME_NUMBER = "number";
-Blockly.Msg.LOOKS_NUMBERNAME_NAME = "name";
+Blockly.Msg.LOOKS_PREVIOUSBACKDROP = 'предыдущий фон';
 
 // Motion blocks
 Blockly.Msg.MOTION_MOVESTEPS = "идти %1 шагов";
@@ -151,7 +160,6 @@ Blockly.Msg.MOTION_SETROTATIONSTYLE_ALLAROUND = 'кругом';
 Blockly.Msg.MOTION_XPOSITION = "положение x";
 Blockly.Msg.MOTION_YPOSITION = "положение y";
 Blockly.Msg.MOTION_DIRECTION = "направление";
-
 Blockly.Msg.MOTION_SCROLLRIGHT = "scroll right %1";
 Blockly.Msg.MOTION_SCROLLUP = "scroll up %1";
 Blockly.Msg.MOTION_ALIGNSCENE = "align scene %1";
@@ -198,7 +206,7 @@ Blockly.Msg.OPERATORS_MATHOP_EEXP = "e ^";
 Blockly.Msg.OPERATORS_MATHOP_10EXP = "10 ^";
 
 // Procedures blocks
-Blockly.Msg.PROCEDURES_DEFINITION = "define %1";
+Blockly.Msg.PROCEDURES_DEFINITION = 'define %1';
 
 // Sensing blocks
 Blockly.Msg.SENSING_TOUCHINGOBJECT = "касается %1?";
@@ -256,8 +264,20 @@ Blockly.Msg.SOUND_CHANGEVOLUMEBY = "изменить громкость на %1"
 Blockly.Msg.SOUND_SETVOLUMETO = "установить громкость %1%";
 Blockly.Msg.SOUND_VOLUME = "громкость";
 
+// Category labels
+Blockly.Msg.CATEGORY_MOTION = 'Motion';
+Blockly.Msg.CATEGORY_LOOKS = 'Looks';
+Blockly.Msg.CATEGORY_SOUND = 'Sound';
+Blockly.Msg.CATEGORY_EVENTS = 'Events';
+Blockly.Msg.CATEGORY_CONTROL = 'Control';
+Blockly.Msg.CATEGORY_SENSING = 'Sensing';
+Blockly.Msg.CATEGORY_OPERATORS = 'Operators';
+Blockly.Msg.CATEGORY_VARIABLES = 'Variables';
+Blockly.Msg.CATEGORY_MYBLOCKS = 'My Blocks';
+
 // Context menus
-Blockly.Msg.DUPLICATE_BLOCK = 'Duplicate';
+Blockly.Msg.DUPLICATE = 'Duplicate';
+Blockly.Msg.DELETE = 'Delete';
 Blockly.Msg.ADD_COMMENT = 'Add Comment';
 Blockly.Msg.REMOVE_COMMENT = 'Remove Comment';
 Blockly.Msg.DELETE_BLOCK = 'Delete Block';
@@ -269,6 +289,7 @@ Blockly.Msg.UNDO = 'Undo';
 Blockly.Msg.REDO = 'Redo';
 Blockly.Msg.EDIT_PROCEDURE = 'Edit';
 Blockly.Msg.SHOW_PROCEDURE_DEFINITION = 'Go to definition';
+Blockly.Msg.WORKSPACE_COMMENT_DEFAULT_TEXT = 'Say something...';
 
 // Color
 Blockly.Msg.COLOUR_HUE_LABEL = 'Color';

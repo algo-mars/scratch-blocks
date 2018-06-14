@@ -133,6 +133,31 @@ Blockly.Events.VAR_DELETE = 'var_delete';
 Blockly.Events.VAR_RENAME = 'var_rename';
 
 /**
+ * Name of event that creates a comment.
+ * @const
+ */
+Blockly.Events.COMMENT_CREATE = 'comment_create';
+
+/**
+ * Name of event that moves a comment.
+ * @const
+ */
+Blockly.Events.COMMENT_MOVE = 'comment_move';
+
+/**
+ * Name of event that changes a comment's property
+ * (text content, size, or minimized state).
+ * @const
+ */
+Blockly.Events.COMMENT_CHANGE = 'comment_change';
+
+/**
+ * Name of event that deletes a comment.
+ * @const
+ */
+Blockly.Events.COMMENT_DELETE = 'comment_delete';
+
+/**
  * Name of event that records a UI change.
  * @const
  */
@@ -299,7 +324,7 @@ Blockly.Events.setGroup = function(state) {
  */
 Blockly.Events.getDescendantIds_ = function(block) {
   var ids = [];
-  var descendants = block.getDescendants();
+  var descendants = block.getDescendants(false);
   for (var i = 0, descendant; descendant = descendants[i]; i++) {
     ids[i] = descendant.id;
   }
@@ -336,6 +361,18 @@ Blockly.Events.fromJson = function(json, workspace) {
     case Blockly.Events.VAR_RENAME:
       event = new Blockly.Events.VarRename(null);
       break;
+    case Blockly.Events.COMMENT_CREATE:
+      event = new Blockly.Events.CommentCreate(null);
+      break;
+    case Blockly.Events.COMMENT_CHANGE:
+      event = new Blockly.Events.CommentChange(null);
+      break;
+    case Blockly.Events.COMMENT_MOVE:
+      event = new Blockly.Events.CommentMove(null);
+      break;
+    case Blockly.Events.COMMENT_DELETE:
+      event = new Blockly.Events.CommentDelete(null);
+      break;
     case Blockly.Events.UI:
       event = new Blockly.Events.Ui(null);
       break;
@@ -368,7 +405,7 @@ Blockly.Events.disableOrphans = function(event) {
     var block = workspace.getBlockById(event.blockId);
     if (block) {
       if (block.getParent() && !block.getParent().disabled) {
-        var children = block.getDescendants();
+        var children = block.getDescendants(false);
         for (var i = 0, child; child = children[i]; i++) {
           child.setDisabled(false);
         }
